@@ -55,6 +55,9 @@ namespace Blog.Api.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
                 var category = new Category
                 { 
                     Id = 0,
@@ -82,6 +85,9 @@ namespace Blog.Api.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
                 var category = await _context
                     .Categories
                     .FirstOrDefaultAsync(x => x.Id == id);
